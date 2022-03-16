@@ -1,4 +1,10 @@
 set nocompatible		" not compatible with Vi
+filetype on 
+filetype indent on
+filetype plugin on
+filetype plugin indent on
+
+set mouse=a
 set tabstop=4
 set nu
 set autoindent
@@ -20,8 +26,11 @@ set ignorecase
 set smartcase
 
 let mapleader=" "
+let g:mapleader=" "
 noremap <LEADER>/ :nohlsearch<CR>
 noremap <LEADER>, :source $MYVIMRC<CR>:nohlsearch<CR>
+noremap <LEADER>q :q<CR>
+noremap <LEADER>w :w<CR>
 
 " Keep search pattern at the center of the screen
 nnoremap <silent> n nzz
@@ -29,6 +38,35 @@ nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
+
+" Keep H L move at the center of the screen
+nnoremap <silent> H Hzz
+nnoremap <silent> L Lzz
+
+" auto complete quotes
+" inoremap ( ()<ESC>i
+" inoremap [ []<ESC>i
+" inoremap { {}<ESC>i
+" inoremap < <><ESC>i
+
+" split console easier
+map sl :set splitright<CR>:vsplit<CR>
+map sh :set nosplitright<CR>:vsplit<CR>
+map sj :set splitbelow<CR>:split<CR>
+map sk :set nosplitbelow<CR>:split<CR>
+
+" easier movement in split window
+map <LEADER>h <C-w>h
+map <LEADER>j <C-w>j
+map <LEADER>k <C-w>k
+map <LEADER>l <C-w>l
+
+" switch split windows in vertical and horizontal
+map sv <C-w>t<C-w>H
+map sh <C-w>t<C-w>K
+
+" shortcut for new tabs
+map <LEADER>t :tabe<CR>
 
 syntax on
 autocmd FileType python,shell,coffee set commentstring=#\ %s
@@ -49,10 +87,10 @@ if $TERM_PROGRAM =~ "iTerm"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 endif
 
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+noremap <Up> :res +5<CR>
+noremap <Down> :res -5<CR>
+noremap <Left> :vertical resize-5<CR>
+noremap <Right> :vertical resize+5<CR>
 "--------------------
 "	Vundle Config
 "--------------------
@@ -82,8 +120,8 @@ let g:airline_powerline_fonts = 1
 Plugin 'scrooloose/nerdtree'
 " let NERDTreeWinPos='right'
 let NERDTreeWinSize=30
-map <F2> :NERDTreeToggle<CR>
-Plugin 'VimIm'
+map <LEADER>f :NERDTreeToggle<CR>
+" Plugin 'VimIm'
 " Plugin 'Valloric/YouCompleteMe'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
