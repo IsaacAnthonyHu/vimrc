@@ -72,6 +72,7 @@ syntax on
 autocmd FileType python,shell,coffee set commentstring=#\ %s
 autocmd FileType java,c,cpp set commentstring=//\ %s
 
+" use %% as current address in command mode
 cnoremap <expr> %% getcmdtype( ) == ':' ? expand('%:h').'/' : '%%'
 
 set incsearch
@@ -130,6 +131,7 @@ map <LEADER>f :NERDTreeToggle<CR>
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 "Plugin 'ybian/smartim'
+Plugin 'jiangmiao/auto-pairs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
